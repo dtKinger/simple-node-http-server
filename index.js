@@ -9,6 +9,10 @@ http.createServer((req, res) => {
   } else if (reqUrl === '/' || reqUrl === '') {
     reqUrl = '/index';
     getHtmlFile(reqUrl)
+  } else if (req.url == '/style.css') {
+      res.setHeader('Content-type', 'text/css');
+      res.write(fs.readFileSync('style.css'));
+      res.end();
   } else {
     getHtmlFile(reqUrl)
   }
